@@ -1,4 +1,4 @@
-package cw_1;
+package lesson1.hw_2;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -7,7 +7,6 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,26 +14,20 @@ public class Main {
                 .configure("hibernate.cfg.xml")
                 .build();
         Metadata metadata = new MetadataSources(serviceRegistry)
-                .addAnnotatedClass(User.class)
+                .addAnnotatedClass(Owner.class)
+                .addAnnotatedClass(Car.class)
                 .getMetadataBuilder()
                 .build();
         SessionFactory sessionFactory = metadata
                 .getSessionFactoryBuilder()
                 .build();
         Session session = sessionFactory.openSession();
-//        session.beginTransaction();
-//
-//        session.save(new User("Vasya"));
-//        session.save(new User("Sasha"));
-//        session.save(new User("Olya"));
-//
-//
-//        session.getTransaction().commit();
+        session.beginTransaction();
+        session.save(new Car("KIA", Type.HATCHBACK, 34, 2000, 1999));
+        session.save(new Owner("Petya");
 
-//        List<User> resultList = session.createNativeQuery("select * from user", User.class).getResultList();
-        List<User> resultList = session.createQuery("select u from User u", User.class).getResultList();
-        System.out.println(resultList);
 
+        session.getTransaction().commit();
         session.close();
         sessionFactory.close();
     }

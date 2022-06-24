@@ -1,4 +1,4 @@
-package cw_1;
+package lesson1.cw_1;
 
 import javax.persistence.*;
 import java.io.Serializable;

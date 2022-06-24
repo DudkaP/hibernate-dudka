@@ -1,4 +1,4 @@
-package hw_1;
+package lesson1.hw_1;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -6,12 +6,19 @@ import java.io.Serializable;
 public class Word implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
     private Long id;
     private String value;
 
     public Word(String value) {
         this.value = value;
+    }
+
+    @Override
+    public String toString() {
+        return "Word{" +
+                "id=" + id +
+                ", value='" + value + '\'' +
+                '}';
     }
 
     public Word() {
